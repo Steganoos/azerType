@@ -13,7 +13,7 @@ function afficherResultat(score, nbMotsProposes) {
     // Récupération de la zone dans laquelle on va écrire le score
     let spanScore = document.querySelector(".zoneScore span")
     // Ecriture du texte
-    let affichageScore = `${score} / ${nbMotsProposes}` 
+    let affichageScore = `${score} / ${nbMotsProposes}`
     // On place le texte à l'intérieur du span. 
     spanScore.innerText = affichageScore
 }
@@ -87,6 +87,17 @@ function lancerJeu() {
             afficherProposition(listeProposition[i])
         })
     }
+    let form = document.querySelector(".popup form");
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        let baliseNom = document.getElementById("nom");
+        let nom = baliseNom.value;
+        let baliseEmail = document.getElementById("email");
+        let email = baliseEmail.value;
+        let scoreEmail = `${score} / ${i}`;
+
+        afficherEmail(nom, email, scoreEmail)
+    })
 
     afficherResultat(score, i)
 }
